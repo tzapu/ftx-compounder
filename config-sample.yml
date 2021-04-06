@@ -1,0 +1,7 @@
+ftx:
+  # ftx key
+  key: xxx
+  # ftx secret
+  secret: xxx
+# Display debug messages
+logging: '*=trace'
