@@ -80,7 +80,7 @@ func updateLending(c *rest.Client, coin string) {
 					log.Fatalf("failed to submit lending offer: %s", err)
 				}
 				apr := moolah * 24 * 365 / li.Lendable // maybe ok if ran every hour
-				log.WithField("APR", apr).Infof("added $%.2f to lending for a grand total of $%.2f", moolah, li.Offered)
+				log.WithField("APR", apr).Infof("added $%.2f to lending for a grand total of $%.2f", moolah, li.Lendable)
 			} else {
 				log.Info("nothing to increase offer with")
 			}
