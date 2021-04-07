@@ -24,6 +24,9 @@ var runCmd = &cobra.Command{
 
 		ftxKey := viper.GetString("ftx.key")
 		ftxSecret := viper.GetString("ftx.secret")
+		if ftxKey == "xxx" || ftxSecret == "xxx" {
+			log.Fatal("please setup your config.yml file")
+		}
 		crontab := cron.New()
 
 		// client := rest.New(auth.New(ftxKey, ftxSecret))
@@ -33,12 +36,12 @@ var runCmd = &cobra.Command{
 			auth.New(
 				ftxKey,
 				ftxSecret,
-				auth.SubAccount{
-					UUID:     1,
-					Nickname: "gunbot",
-				},
+				// auth.SubAccount{
+				// 	UUID:     1,
+				// 	Nickname: "gunbot",
+				// },
 			))
-		clientWithSubAccounts.Auth.UseSubAccountID(1) // or 2... this number is key in map[int]SubAccount
+		// clientWithSubAccounts.Auth.UseSubAccountID(1) // or 2... this number is key in map[int]SubAccount
 
 		// client or clientWithSubAccounts in this time.
 		c := clientWithSubAccounts // or clientWithSubAccounts
